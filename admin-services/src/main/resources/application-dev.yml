@@ -8,7 +8,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.zaxxer.hikari.HikariDataSource
     username: root
-    password: 123456
+    password: xiongfei
     url: jdbc:mysql://127.0.0.1:3306/api-boot-admin?characterEncoding=utf8&serverTimezone=Asia/Shanghai
 
 

@@ -88,6 +88,19 @@
             <artifactId>javax.inject</artifactId>
             <version>${javax.inject.version}</version>
         </dependency>
+
+        <!-- SpringBoot 拦截器 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+
+
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>${hutool.version}</version>
+        </dependency>
     </dependencies>
     <dependencyManagement>
         <dependencies>
@@ -132,7 +145,7 @@
                     <dbName>api-boot-admin</dbName>
                     <dbUrl>jdbc:mysql://127.0.0.1:3306</dbUrl>
                     <dbUserName>root</dbUserName>
-                    <dbPassword>123456</dbPassword>
+                    <dbPassword>xiongfei</dbPassword>
                     <packageName>org.minbox.framework.api.boot.admin.entity</packageName>
                     <!-- "%"代表全部的表都参与生成实体 -->
                     <tableNamePattern>%</tableNamePattern>

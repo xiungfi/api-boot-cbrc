@@ -28,6 +28,7 @@ api:
         enable: true
         sign-key: ApiBootAdmin@v1
       away: jdbc
+      grant-types: password,refresh_token
     # ApiBoot MyBatis Pageable相关配置
     pageable:
       # 配置使用的数据库方言为：MySQL

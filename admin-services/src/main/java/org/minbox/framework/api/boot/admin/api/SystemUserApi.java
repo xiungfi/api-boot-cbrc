@@ -1,7 +1,6 @@
 package org.minbox.framework.api.boot.admin.api;
 
-import com.gitee.hengboy.mybatis.pageable.Page;
-import com.gitee.hengboy.mybatis.pageable.request.PageableRequest;
+
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.minbox.framework.api.boot.admin.api.base.BaseApi;
@@ -14,6 +13,8 @@ import org.minbox.framework.api.boot.admin.common.model.ApiResponse;
 import org.minbox.framework.api.boot.admin.converter.SystemUserStruct;
 import org.minbox.framework.api.boot.admin.entity.SystemUser;
 import org.minbox.framework.api.boot.admin.service.SystemUserService;
+import org.minbox.framework.mybatis.pageable.Page;
+import org.minbox.framework.mybatis.pageable.request.PageableRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
