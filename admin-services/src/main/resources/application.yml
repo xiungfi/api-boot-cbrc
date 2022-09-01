@@ -22,6 +22,9 @@ api:
       enable-default-store-delegate: false
       # 拦截服务内的全部接口请求地址
       auth-prefix: /**
+      # 排除不拦截的路径
+      ignoring-urls:
+        - /druid/**
     # ApiBoot OAuth相关配置
     oauth:
       jwt:

@@ -1,6 +1,7 @@
 package org.minbox.framework.api.boot.admin.api;
 
 
+import com.baomidou.dynamic.datasource.annotation.DS;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.minbox.framework.api.boot.admin.api.base.BaseApi;
@@ -52,6 +53,20 @@ public class SystemUserApi extends BaseApi {
         return ApiResponse.success().data(page);
     }
 
+    /**
+     * 分页查询系统用户列表2,使用db2数据库
+     *
+     * @return {@link ApiResponse}
+     * @throws LogicException
+     */
+    @GetMapping(value = URL_FILTERS + "/pageable2")
+    @ApiOperation(value = "条件分页查询用户列表2")
+    @DS("db2")
+    public ApiResponse<Page<SystemUser>> findByPageabledb2(@Valid SelectSystemUserByParamRequest request) throws LogicException {
+        Page<SystemUser> page =
+                PageableRequest.of(request.getPage(), request.getSize()).request(() -> systemUserService.findByParams(request));
+        return ApiResponse.success().data(page);
+    }
     /**
      * 启用系统用户
      * 根据用户编号{@link SystemUser#getUserId()}支持一次性启用多个
