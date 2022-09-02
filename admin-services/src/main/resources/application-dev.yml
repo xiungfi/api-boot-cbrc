@@ -5,6 +5,15 @@
 # 数据库配置
 # 数据源配置
 spring:
+  encrypt:
+    key: d86d7bab3d6ac01ad9dc6a897652f2d2
+    debug: false
+    responseEncryptUriIgnoreList:
+      - /oauth/token
+    requestDecryptUriIgnoreList:
+      - /oauth/token
+  autoconfigure:
+    exclude: com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure # 去除druid配置
   datasource:
     # 指定使用 Druid 数据源
     type: com.alibaba.druid.pool.DruidDataSource
@@ -31,6 +40,8 @@ spring:
         testOnReturn: false
         filters: stat,wall,log4j2
         share-prepared-statements: true
+        # 通过 connection-properties 属性打开 mergeSql 功能；慢 SQL 记录
+        connection-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
 
       primary: db1 # 配置默认数据库
       datasource:
@@ -48,7 +59,6 @@ spring:
           driver-class-name: com.mysql.cj.jdbc.Driver
 
     druid:
-      filters: stat,wall,log4j2
       # 通过 connection-properties 属性打开 mergeSql 功能；慢 SQL 记录
       connection-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
       filter:
@@ -81,8 +91,7 @@ spring:
       aop-patterns: com.druid.*
 
 
-  autoconfigure:
-    exclude: com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure # 去除druid配置
+
 # ApiBoot
 api:
   boot:

@@ -111,7 +111,7 @@ git clone git@gitee.com:minbox-projects/api-boot-admin.git
 
 > 首页只是图表组件示例，如需动态读取数据可以了解`vue-element-admin`。
 
-![](https://assets.yuqiyu.com/images/api-boot-admin/WX20200107-122940@2x.png)
+
 
 该模块内的功能是已经完善的，用到的接口都在`admin-services/org.minbox.framework.api.boot.admin.api.SystemUserApi`控制器内，查看源码可了解`ApiBoot`各个组件的使用方式。
 
@@ -119,8 +119,26 @@ git clone git@gitee.com:minbox-projects/api-boot-admin.git
 
 `ApiBoot Admin`内部通过集成`ApiBoot Swagger`来实现接口文档的自动生成。
 
-访问地址：[http://localhost:9090/swagger-ui.html](http://localhost:9090/swagger-ui.html)。
+访问地址：[http://localhost:11000/swagger-ui.html](http://localhost:9090/swagger-ui.html)。
 
 在接口Api类内的方法上简单的配置`Swagger2`所提供的注解就可以实现文档的自动生成，支持在线调试，还支持设置`OAuth2`所生成的请求令牌调试接口。
 
-![](https://assets.yuqiyu.com/images/api-boot-admin/WX20200107-164206@2x.png)
+
+
+
+
+## token相关地址
+
+## 获取token
+
+[http://localhost:11000/oauth/token?grant_type=password&username=xiongfei&password=xiongfei](http://localhost:11000/oauth/token?grant_type=password&username=xiongfei&password=xiongfei)
+
+如果使用jdbc，username 和 password 在`system_user`表中
+
+postman 使用
+
+![image-20220902124902403](README.assets/image-20220902124902403.png)
+
+刷新token
+
+[http://localhost:11000/oauth/token?grant_type=refresh_token&refresh_token=xxx](http://localhost:11000/oauth/token?grant_type=refresh_token&refresh_token=xxxx)

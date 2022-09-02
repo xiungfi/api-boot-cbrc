@@ -2,6 +2,7 @@ package org.minbox.framework.api.boot.admin.api;
 
 
 import com.baomidou.dynamic.datasource.annotation.DS;
+import com.cxytiandi.encrypt.springboot.annotation.Encrypt;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.minbox.framework.api.boot.admin.api.base.BaseApi;
@@ -137,5 +138,18 @@ public class SystemUserApi extends BaseApi {
         String userId = systemUserService.addUser(systemUser);
         globalLogging.debug("用户：{}，添加成功，用户编号为：{}", request.getUsername(), userId);
         return ApiResponse.success().data(userId);
+    }
+
+    @GetMapping (value = "/test")
+    @ApiOperation(value = "添加用户")
+    public ApiResponse<String> test() throws LogicException {
+        return ApiResponse.success().data("2");
+    }
+
+    @Encrypt
+    @GetMapping (value = "/test2")
+    @ApiOperation(value = "添加用户")
+    public ApiResponse<String> test2() throws LogicException {
+        return ApiResponse.success().data("2");
     }
 }

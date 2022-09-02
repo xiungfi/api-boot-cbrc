@@ -25,6 +25,7 @@ api:
       # 排除不拦截的路径
       ignoring-urls:
         - /druid/**
+        - /system/user/test/**
     # ApiBoot OAuth相关配置
     oauth:
       jwt:

@@ -1,5 +1,6 @@
 package org.minbox.framework.api.boot.admin;
 
+import com.cxytiandi.encrypt.springboot.annotation.EnableEncrypt;
 import org.minbox.framework.api.boot.autoconfigure.swagger.annotation.EnableApiBootSwagger;
 import org.minbox.framework.logging.spring.context.annotation.client.EnableLoggingClient;
 import org.slf4j.Logger;
@@ -16,6 +17,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 @EnableApiBootSwagger
 @EnableLoggingClient
+@EnableEncrypt
 public class ApiBootAdminApplication {
     /**
      * logger instance
