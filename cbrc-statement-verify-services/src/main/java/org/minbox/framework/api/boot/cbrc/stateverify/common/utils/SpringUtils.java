@@ -1,4 +1,4 @@
-package org.minbox.framework.api.boot.admin.common.utils.spring;
+package org.minbox.framework.api.boot.cbrc.stateverify.common.utils;
 
 import cn.hutool.core.util.ArrayUtil;
 import org.springframework.aop.framework.AopContext;
