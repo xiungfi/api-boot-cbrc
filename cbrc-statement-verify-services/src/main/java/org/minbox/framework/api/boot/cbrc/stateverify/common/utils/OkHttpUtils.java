@@ -174,7 +174,7 @@ public class OkHttpUtils {
      *                   false等于普通的表单提交
      * @return
      */
-    public OkHttpUtils post(boolean isJsonPost) {
+    public OkHttpUtils post(boolean isJsonPost, boolean isFormData) {
         RequestBody requestBody;
         if (isJsonPost) {
             String json = "";
@@ -182,12 +182,23 @@ public class OkHttpUtils {
                 json = JSON.toJSONString(paramMap);
             }
             requestBody = RequestBody.create(json, MediaType.parse("application/json; charset=utf-8"));
-        } else {
+        } else if (isFormData) {//Content-Type: multipart/form-data
+
+            MultipartBody.Builder builder = new MultipartBody.Builder()
+                    .setType(MultipartBody.FORM);
+
+            if (paramMap != null) {
+                paramMap.forEach(builder::addFormDataPart);
+            }
+            requestBody = builder.build();
+
+        } else { //Content-Type:application/x-www-form-urlencoded
             FormBody.Builder formBody = new FormBody.Builder();
             if (paramMap != null) {
                 paramMap.forEach(formBody::add);
             }
             requestBody = formBody.build();
+
         }
         request = new Request.Builder().post(requestBody).url(url);
         return this;
