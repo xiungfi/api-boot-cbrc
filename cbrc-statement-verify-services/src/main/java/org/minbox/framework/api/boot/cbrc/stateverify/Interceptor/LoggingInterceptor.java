@@ -4,6 +4,7 @@ import okhttp3.*;
 import okhttp3.internal.http.HttpHeaders;
 import okio.Buffer;
 import okio.BufferedSource;
+import org.minbox.framework.api.boot.cbrc.stateverify.Interceptor.formatter.JSONFormatter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -17,6 +18,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 /**
  * @author: xiongfei
  * @date: 2022/09/05 22:14
+ * @descprtion: okhttp3 日志拦截器
  */
 
 public class LoggingInterceptor implements Interceptor {
@@ -29,7 +31,7 @@ public class LoggingInterceptor implements Interceptor {
         Request request = chain.request();
         final int id = ID_GENERATOR.incrementAndGet();
         {
-            final String LOG_PREFIX = "[" + id + " request]";
+            final String LOG_PREFIX = "[" + id + " request] ";
             RequestBody requestBody = request.body();
             boolean hasRequestBody = requestBody != null;
 
@@ -74,9 +76,10 @@ public class LoggingInterceptor implements Interceptor {
 
                 if (isPlaintext(buffer)) {
                     final String bufferString = buffer.readString(charset);
-                    logger.info(LOG_PREFIX + bufferString);
                     if (contentType != null && "json".equals(contentType.subtype())) {
-                        logger.info(LOG_PREFIX + "\n" + bufferString);
+                        logger.info(LOG_PREFIX + "\n" + JSONFormatter.formatJSON(bufferString));
+                    }else{
+                        logger.info(LOG_PREFIX + bufferString);
                     }
                     logger.info(LOG_PREFIX + "--> END " + request.method()
                             + " (" + requestBody.contentLength() + "-byte body)");
@@ -88,7 +91,7 @@ public class LoggingInterceptor implements Interceptor {
         }
 
         {
-            final String LOG_PREFIX = "[" + id + " response]";
+            final String LOG_PREFIX = "[" + id + " response] ";
             long startNs = System.nanoTime();
             Response response;
             try {
@@ -137,9 +140,11 @@ public class LoggingInterceptor implements Interceptor {
 
                 if (contentLength != 0) {
                     final String bufferString = buffer.clone().readString(charset);
-                    logger.info(LOG_PREFIX + bufferString);
+
                     if (contentType != null && "json".equals(contentType.subtype())) {
-                        logger.info(LOG_PREFIX + "\n" + bufferString);
+                        logger.info(LOG_PREFIX + "\n" + JSONFormatter.formatJSON(bufferString));
+                    }else{
+                        logger.info(LOG_PREFIX + bufferString);
                     }
                 }
 
