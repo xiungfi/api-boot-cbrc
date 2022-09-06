@@ -73,7 +73,48 @@ public class PdfUtils {
                         XEasyPdfHandler.Text.build("日期范围：" + "2021/01/01 --- 2022/01/01").setMarginLeft(10F),
                         XEasyPdfHandler.Text.build("币种：" + "人民币").setMarginLeft(10F),
 
-                        XEasyPdfHandler.Table.build(rowList).setFontSize(5F).setHorizontalStyle(XEasyPdfPositionStyle.CENTER).setVerticalStyle(XEasyPdfPositionStyle.CENTER).setMarginTop(50F).setMarginLeft(50F).setMarginBottom(30F)
+                        XEasyPdfHandler.Table.build(rowList).setFontSize(5F).setHorizontalStyle(XEasyPdfPositionStyle.CENTER)
+                        .setVerticalStyle(XEasyPdfPositionStyle.CENTER).setMarginTop(50F)
+                        .setMarginLeft(50F).setMarginBottom(30F)
+                        .setTitle(
+                                XEasyPdfHandler.Table.build(
+                                        XEasyPdfHandler.Table.Row.build(
+                                                XEasyPdfHandler.Table.Row.Cell.build(60f, 30f).addContent(
+                                                        XEasyPdfHandler.Text.build("T1")
+                                                ),
+                                                XEasyPdfHandler.Table.Row.Cell.build(100f, 30f).addContent(
+                                                        XEasyPdfHandler.Text.build("T2")
+                                                ),
+                                                XEasyPdfHandler.Table.Row.Cell.build(100f, 30f).addContent(
+                                                        XEasyPdfHandler.Text.build("T3")
+                                                ),
+                                                XEasyPdfHandler.Table.Row.Cell.build(60f, 30f).addContent(
+                                                        XEasyPdfHandler.Text.build("T4")
+                                                ),
+                                                XEasyPdfHandler.Table.Row.Cell.build(60f, 30f).addContent(
+                                                        XEasyPdfHandler.Text.build("T4")
+                                                ),
+                                                XEasyPdfHandler.Table.Row.Cell.build(60f, 30f).addContent(
+                                                        XEasyPdfHandler.Text.build("T4")
+                                                ),
+                                                XEasyPdfHandler.Table.Row.Cell.build(60f, 30f).addContent(
+                                                        XEasyPdfHandler.Text.build("T4")
+                                                ),
+                                                XEasyPdfHandler.Table.Row.Cell.build(60f, 30f).addContent(
+                                                        XEasyPdfHandler.Text.build("T4")
+                                                ),
+                                                XEasyPdfHandler.Table.Row.Cell.build(60f, 30f).addContent(
+                                                        XEasyPdfHandler.Text.build("T4")
+                                                ),
+                                                XEasyPdfHandler.Table.Row.Cell.build(60f, 30f).addContent(
+                                                        XEasyPdfHandler.Text.build("T4")
+                                                ),
+                                                XEasyPdfHandler.Table.Row.Cell.build(60f, 30f).addContent(
+                                                        XEasyPdfHandler.Text.build("T4")
+                                                )
+                                        ).setBorderPolicy(XEasyPdfRow.BorderPolicy.NONE).setBackgroundColor(Color.GRAY).setMarginLeft(49.5F)
+                                )
+                        )
                 )
         ).enableReplaceTotalPagePlaceholder()
 
