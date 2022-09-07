@@ -12,7 +12,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  *
  * 启动入口类
  *
- * @author 恒宇少年
+ * @author xiongfei
  */
 @SpringBootApplication
 @EnableApiBootSwagger
@@ -26,6 +26,6 @@ public class CrbicStateVerifyApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(CrbicStateVerifyApplication.class, args);
-        logger.info("「ApiBoot Admin」服务启动成功.");
+        logger.info("「银监金综链 流水验真」服务启动成功.");
     }
 }

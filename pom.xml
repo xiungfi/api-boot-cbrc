@@ -7,6 +7,7 @@
         <module>admin-services</module>
         <module>admin-ui</module>
         <module>admin-log-server</module>
+        <module>cbrc-statement-verify-services</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

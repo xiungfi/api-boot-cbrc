@@ -139,6 +139,11 @@
         </dependency>
 
 
+        <dependency>
+            <groupId>wiki.xsx</groupId>
+            <artifactId>x-easypdf</artifactId>
+            <version>2.10.1</version>
+        </dependency>
 
 
     </dependencies>
