@@ -5,6 +5,7 @@ import com.gitee.hengboy.mybatis.enhance.common.annotation.Id;
 import com.gitee.hengboy.mybatis.enhance.common.annotation.Table;
 import com.gitee.hengboy.mybatis.enhance.common.enums.KeyGeneratorTypeEnum;
 import lombok.Data;
+import lombok.experimental.Accessors;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
@@ -15,6 +16,7 @@ import java.sql.Timestamp;
  */
 @Data
 @Table(name = "system_user")
+@Accessors(chain = true)
 public class SystemUser implements Serializable {
 
     /**

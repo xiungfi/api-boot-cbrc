@@ -1,13 +1,17 @@
 # ====================== #
 # ======开发环境配置====== #
 # ====================== #
+cbrc:
+  file:
+    save:
+      path: E:\\pdf\\test
+
 
 # 数据库配置
 # 数据源配置
 spring:
   encrypt:
-    key: d86d7bab3d6ac01ad9dc6a897652f2d2
-    debug: false
+    key: d86d7bab3d6ac01a
     responseEncryptUriIgnoreList:
       - /oauth/token
     requestDecryptUriIgnoreList:

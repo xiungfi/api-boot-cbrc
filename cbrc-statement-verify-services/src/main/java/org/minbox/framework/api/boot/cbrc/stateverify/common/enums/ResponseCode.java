@@ -15,6 +15,11 @@ public enum ResponseCode {
     USER_ALREADY_CREATED("USER_ALREADY_CREATED", "用户：%s，已经存在."),
     USER_STATUS_ABNORMAL("USER_STATUS_ABNORMAL", "用户：%s，状态异常."),
     PARAMETER_VALID_FAIL("PARAMETER_VALID_FAIL", "参数异常."),
+    ACCOUNT_NOT_FOUND("ACCOUNT_NOT_FOUND", "账号：%s，在我行系统不存在."),
+
+    CBRC_TOKEN_VALIDFAIL("CBRC_TOKEN_VALIDFAIL", "银监token:%s, 异常. %s"),
+    CBRC_SUCCESS("0", "请求成功."),
+    CBRC_FAIL("1","请求异常, %s")
     ;
     private String code;
     private String message;

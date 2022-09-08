@@ -3,6 +3,7 @@ package org.minbox.framework.api.boot.cbrc.stateverify.common.utils;
 import com.alibaba.fastjson.JSON;
 import okhttp3.*;
 import org.minbox.framework.api.boot.cbrc.stateverify.Interceptor.LoggingInterceptor;
+import org.minbox.framework.api.boot.cbrc.stateverify.common.exception.LogicException;
 
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLSocketFactory;
@@ -209,7 +210,7 @@ public class OkHttpUtils {
      *
      * @return
      */
-    public String sync() throws Exception {
+    public String sync() throws LogicException {
         setHeader(request);
         try {
             Response response = okHttpClient.newCall(request.build()).execute();
@@ -264,7 +265,7 @@ public class OkHttpUtils {
      *
      * @param request
      */
-    private void setHeader(Request.Builder request) throws Exception {
+    private void setHeader(Request.Builder request) throws LogicException {
         if (headerMap != null) {
             try {
                 for (Map.Entry<String, String> entry : headerMap.entrySet()) {

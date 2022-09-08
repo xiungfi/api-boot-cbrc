@@ -4,7 +4,6 @@ package org.minbox.framework.api.boot.cbrc.stateverify.api;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.minbox.framework.api.boot.cbrc.stateverify.api.base.BaseApi;
 import org.minbox.framework.api.boot.cbrc.stateverify.common.exception.LogicException;
 import org.minbox.framework.api.boot.cbrc.stateverify.common.utils.OkHttpUtils;
 import org.minbox.framework.api.boot.cbrc.stateverify.entity.AppInfo;
@@ -24,7 +23,7 @@ import java.util.Base64;
 @RestController
 @RequestMapping(value = "/cbrc/auth")
 @Api(tags = "授权获取api")
-public class AuthApi extends BaseApi {
+public class AuthApi{
 
     @PostMapping (value = "/getAccessToken")
     @ApiOperation(value = "获取授权")

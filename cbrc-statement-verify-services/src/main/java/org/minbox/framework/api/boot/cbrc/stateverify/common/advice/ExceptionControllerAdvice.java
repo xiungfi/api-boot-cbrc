@@ -1,5 +1,6 @@
 package org.minbox.framework.api.boot.cbrc.stateverify.common.advice;
 
+import cn.hutool.core.util.StrUtil;
 import org.minbox.framework.api.boot.cbrc.stateverify.common.enums.ResponseCode;
 import org.minbox.framework.api.boot.cbrc.stateverify.common.exception.LogicException;
 import org.minbox.framework.api.boot.cbrc.stateverify.common.model.ApiResponse;
@@ -21,9 +22,7 @@ import java.util.List;
 import java.util.Locale;
 
 /**
- * 全局控制器异常通知
- * 只会处理控制器发生的异常，如果你在service把异常自行try-catch，则不会经过该类
- * 建议：把Mapper/Service遇到的异常抛给Controller,由ControllerAdvice统一处理
+ * 全局控制器异常通知 只会处理控制器发生的异常，如果你在service把异常自行try-catch，则不会经过该类 建议：把Mapper/Service遇到的异常抛给Controller,由ControllerAdvice统一处理
  * "annotations"属性配置只有控制器的类上存在{@link RestController}以及{@link Controller}注解时才会经过该类处理
  *
  * @author 恒宇少年
@@ -45,12 +44,11 @@ public class ExceptionControllerAdvice {
      */
     @ExceptionHandler(value = LogicException.class)
     public ApiResponse logicException(LogicException e) {
-        return ApiResponse.error(e.getCode()).errorMsg(e.getErrorMessage());
+        return ApiResponse.error(e.getResponseCode()).errorMsg(e.getErrorMessage());
     }
 
     /**
-     * 处理{@link HttpMessageNotReadableException}异常
-     * "@RequestBody"方式参数不传递时异常
+     * 处理{@link HttpMessageNotReadableException}异常 "@RequestBody"方式参数不传递时异常
      *
      * @return {@link ApiResponse}
      */
@@ -79,7 +77,8 @@ public class ExceptionControllerAdvice {
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseStatus(HttpStatus.OK)
     public ApiResponse methodArgumentNotValidException(MethodArgumentNotValidException e) {
-        return ApiResponse.builder().code(ResponseCode.PARAMETER_VALID_FAIL).errorMsg(this.getErrorFieldMessage(e.getBindingResult()));
+        return ApiResponse.builder().code(ResponseCode.PARAMETER_VALID_FAIL)
+            .errorMsg(this.getErrorFieldMessage(e.getBindingResult()));
     }
 
     /**
@@ -94,15 +93,22 @@ public class ExceptionControllerAdvice {
     }
 
     /**
-     * 处理{@link BindException}异常
-     * 参数绑定验证失败时执行
+     * 处理{@link BindException}异常 参数绑定验证失败时执行
      *
      * @return {@link ApiResponse}
      */
     @ExceptionHandler(BindException.class)
     @ResponseStatus(HttpStatus.OK)
     public ApiResponse illegalParamsExceptionHandler(BindException e) {
-        return ApiResponse.builder().code(ResponseCode.PARAMETER_VALID_FAIL).errorMsg(this.getErrorFieldMessage(e.getBindingResult()));
+        return ApiResponse.builder().code(ResponseCode.PARAMETER_VALID_FAIL)
+            .errorMsg(this.getErrorFieldMessage(e.getBindingResult()));
+    }
+
+    @ExceptionHandler(value = Exception.class)
+    @ResponseStatus(HttpStatus.OK)
+    public ApiResponse handleException(Exception e) {
+        return ApiResponse.error(ResponseCode.CBRC_FAIL).errorMsg(StrUtil.isNotEmpty(e.getMessage())
+            ? StrUtil.sub(e.getMessage(), 0, 100) : StrUtil.sub(e.getCause().toString(), 0, 100));
     }
 
     /**
@@ -112,9 +118,9 @@ public class ExceptionControllerAdvice {
      * @return
      */
     String resolveLocalErrorMessage(FieldError fieldError) {
-        //获取本地locale,zh_CN
+        // 获取本地locale,zh_CN
         Locale currentLocale = LocaleContextHolder.getLocale();
-        //返回错误信息
+        // 返回错误信息
         return messageSource.getMessage(fieldError, currentLocale);
     }
 
@@ -125,18 +131,19 @@ public class ExceptionControllerAdvice {
      * @return
      */
     private String getErrorFieldMessage(BindingResult bindingResult) {
-        //获取错误字段集合
+        // 获取错误字段集合
         List<FieldError> fieldErrors = bindingResult.getFieldErrors();
-        //错误消息集合
-        //JSONObject msg = new JSONObject();
+        // 错误消息集合
+        // JSONObject msg = new JSONObject();
         StringBuilder errorMsg = new StringBuilder();
         for (int i = 0; i < fieldErrors.size(); i++) {
             FieldError fieldError = fieldErrors.get(i);
-            //获取错误信息
+            // 获取错误信息
             String errorMessage = String.format("%s：%s", fieldError.getField(), resolveLocalErrorMessage(fieldError));
-            //添加到错误消息
+            // 添加到错误消息
             errorMsg.append(errorMessage).append(i == fieldErrors.size() - 1 ? "" : " | ");
         }
         return errorMsg.toString();
     }
+
 }

@@ -22,6 +22,9 @@ public class BaseApi {
     @Autowired
     protected GlobalLogging globalLogging;
 
+    // @Autowired
+    //private RedisTemplate<Object,Object> redisTemplate;
+
     /**
      * 获取当前登录用户的登录名
      * {@link SecurityContextHolder#getContext()}

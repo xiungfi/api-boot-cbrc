@@ -10,31 +10,42 @@ spring:
   mvc:
     converters:
       preferred-json-mapper: fastJson
+  couchbase:
+    env:
+      io:
+        idle-http-connection-timeout:
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 30MB
+      max-request-size: 30MB
 server:
   port: 11000
 
 
+
 # ApiBoot
 api:
-  boot:
-    # ApiBoot Security相关配置
-    security:
-      away: jdbc
-      enable-default-store-delegate: false
-      # 拦截服务内的全部接口请求地址
-      auth-prefix: /**
-      # 排除不拦截的路径
-      ignoring-urls:
-        - /druid/**
-        - /system/user/test/**
-        - /cbrc/auth/**
-    # ApiBoot OAuth相关配置
-    oauth:
-      jwt:
-        enable: true
-        sign-key: ApiBootAdmin@v1
-      away: jdbc
-      grant-types: password,refresh_token
+#  boot:
+#    # ApiBoot Security相关配置
+#    security:
+#      away: jdbc
+#      enable-default-store-delegate: false
+#      # 拦截服务内的全部接口请求地址
+#      auth-prefix: /**
+#      # 排除不拦截的路径
+#      ignoring-urls:
+#        - /druid/**
+#        - /system/user/test/**
+#        - /cbrc/auth/**
+#        - /cbrc/statment/**
+#    # ApiBoot OAuth相关配置
+#    oauth:
+#      jwt:
+#        enable: true
+#        sign-key: ApiBootAdmin@v1
+#      away: jdbc
+#      grant-types: password,refresh_token
     # ApiBoot MyBatis Pageable相关配置
     pageable:
       # 配置使用的数据库方言为：MySQL
