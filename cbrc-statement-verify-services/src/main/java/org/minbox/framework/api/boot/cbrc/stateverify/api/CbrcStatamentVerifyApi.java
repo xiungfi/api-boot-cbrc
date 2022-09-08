@@ -12,6 +12,7 @@ import org.minbox.framework.api.boot.cbrc.stateverify.common.exception.LogicExce
 import org.minbox.framework.api.boot.cbrc.stateverify.common.model.ApiResponse;
 import org.minbox.framework.api.boot.cbrc.stateverify.common.utils.OkHttpUtils;
 import org.minbox.framework.api.boot.cbrc.stateverify.entity.CbrcRequest;
+import org.minbox.framework.api.boot.cbrc.stateverify.entity.UploadFileInfo;
 import org.minbox.framework.api.boot.cbrc.stateverify.service.CbrcStatementVerifyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -19,7 +20,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
-import java.io.IOException;
 
 /**
  * @author: xiongfei
@@ -109,19 +109,16 @@ public class CbrcStatamentVerifyApi extends BaseApi {
 
     /**
      *
-     * @param file
-     * @param applyId
+     * @param uploadFileInfo
      * @return
-     * @throws IOException
+     * @throws LogicException
      */
     @PostMapping("/uploadFile")
     @ApiOperation(value = "文件接收服务")
-    public ApiResponse uploadFile(@RequestPart("file") MultipartFile file, @RequestParam String applyId)
-        throws LogicException {
+    public ApiResponse uploadFile(UploadFileInfo uploadFileInfo) throws LogicException {
+        MultipartFile file = uploadFileInfo.getFile();
 
         String fileName = file.getOriginalFilename();
-
-        int a =1/0;
 
         cbrcStatementVerifyService.saveFile(fileName, fileSavePath, file);
 
