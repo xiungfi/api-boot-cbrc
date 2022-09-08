@@ -3,8 +3,8 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>api-boot-admin</artifactId>
-        <groupId>org.minbox.franework</groupId>
+        <artifactId>api-boot-cbrc</artifactId>
+        <groupId>com.boczj</groupId>
         <version>0.1.0.RELEASE</version>
     </parent>
     <properties>
@@ -194,9 +194,9 @@
 
                     <dbName>api-boot-admin</dbName>
                     <dbUrl>jdbc:mysql://127.0.0.1:3306</dbUrl>
-                    <dbUserName>root</dbUserName>
+                    <dbUserName>xiongfei</dbUserName>
                     <dbPassword>xiongfei</dbPassword>
-                    <packageName>org.minbox.framework.api.boot.admin.entity</packageName>
+                    <packageName>org.minbox.framework.api.boot.cbrc.stateverify.entity</packageName>
                     <!-- "%"代表全部的表都参与生成实体 -->
                     <tableNamePattern>%</tableNamePattern>
                     <!--"tables"可以指定表生成实体，可指定多个-->

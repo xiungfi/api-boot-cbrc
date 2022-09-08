@@ -110,7 +110,7 @@ api:
         - /webjars/**
       # 配置Log Server
       admin:
-        server-address: logging-admin:admin#logserver@127.0.0.1:10000
+        server-address: logging-xf:xf#logserver@127.0.0.1:1224
     swagger:
       version: v1.0
       title: 金综链接口服务接口定义文档

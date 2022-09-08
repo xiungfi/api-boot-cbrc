@@ -20,7 +20,7 @@ spring:
       max-file-size: 30MB
       max-request-size: 30MB
 server:
-  port: 11000
+  port: 1989
 
 
 

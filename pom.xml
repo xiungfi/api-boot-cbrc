@@ -4,9 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <packaging>pom</packaging>
     <modules>
-        <module>admin-services</module>
-        <module>admin-ui</module>
-        <module>admin-log-server</module>
+        <module>cbrc-log-server</module>
         <module>cbrc-statement-verify-services</module>
     </modules>
     <parent>
@@ -15,19 +13,17 @@
         <version>2.4.5</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>org.minbox.franework</groupId>
-    <artifactId>api-boot-admin</artifactId>
+    <groupId>com.boczj</groupId>
+    <artifactId>api-boot-cbrc</artifactId>
     <version>0.1.0.RELEASE</version>
-    <name>api-boot-admin</name>
+    <name>api-boot-cbrc</name>
     <description>
-        基于新一代接口服务框架 “ApiBoot” 的前后分离管理平台基础解决方案脚手架示例
+         银监 金综链接口
     </description>
     <developers>
         <developer>
-            <name>恒宇少年 - 于起宇</name>
-            <email>jnyuqy@gmail.com</email>
-            <url>https://blog.yuqiyu.com</url>
-            <organizationUrl>https://gitee.com/minbox-projects</organizationUrl>
+            <name>xiongfei</name>
+            <email>xiungfi@foxmail.com</email>
         </developer>
     </developers>
     <properties>
