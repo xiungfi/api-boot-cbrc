@@ -124,21 +124,3 @@ git clone git@gitee.com:minbox-projects/api-boot-admin.git
 在接口Api类内的方法上简单的配置`Swagger2`所提供的注解就可以实现文档的自动生成，支持在线调试，还支持设置`OAuth2`所生成的请求令牌调试接口。
 
 
-
-
-
-## token相关地址
-
-## 获取token
-
-[http://localhost:11000/oauth/token?grant_type=password&username=xiongfei&password=xiongfei](http://localhost:11000/oauth/token?grant_type=password&username=xiongfei&password=xiongfei)
-
-如果使用jdbc，username 和 password 在`system_user`表中
-
-postman 使用
-
-![image-20220902124902403](README.assets/image-20220902124902403.png)
-
-刷新token
-
-[http://localhost:11000/oauth/token?grant_type=refresh_token&refresh_token=xxx](http://localhost:11000/oauth/token?grant_type=refresh_token&refresh_token=xxxx)
