@@ -51,15 +51,15 @@ spring:
       datasource:
         db1:
           username: root
-          password: xiongfei
-          url: jdbc:mysql://localhost:3306/api-boot-admin?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+          password: 12356
+          url: jdbc:mysql://localhost:3306/api-boot-admin?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&serverTimezone=GMT%2B8
           driver-class-name: com.mysql.cj.jdbc.Driver
 
 
         db2:
           username: root
-          password: xiongfei
-          url: jdbc:mysql://localhost:3306/api-boot-admin2?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+          password: 123456
+          url: jdbc:mysql://localhost:3306/api-boot-admin2?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&serverTimezone=GMT%2B8
           driver-class-name: com.mysql.cj.jdbc.Driver
 
     druid:

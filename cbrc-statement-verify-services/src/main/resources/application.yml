@@ -4,16 +4,12 @@
 
 spring:
   application:
-    name: api-boot-admin-services
+    name: cbrc-statement-verify-services
   profiles:
     active: dev
   mvc:
     converters:
       preferred-json-mapper: fastJson
-  couchbase:
-    env:
-      io:
-        idle-http-connection-timeout:
   servlet:
     multipart:
       enabled: true

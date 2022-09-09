@@ -29,6 +29,6 @@ public class CbrcStateVerifyApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(CbrcStateVerifyApplication.class, args);
-        logger.info("「银监金综链 流水验真」服务启动成功.");
+        logger.info("「流水验真」服务启动成功.");
     }
 }
