@@ -1,70 +1,35 @@
 # ====================== #
 # ======开发环境配置====== #
 # ====================== #
-cbrc:
-  file:
-    save:
-      path: E:\\pdf\\test
-
 
 # 数据库配置
 # 数据源配置
 spring:
-  encrypt:
-    key: d86d7bab3d6ac01a
-    responseEncryptUriIgnoreList:
-      - /oauth/token
-    requestDecryptUriIgnoreList:
-      - /oauth/token
-  autoconfigure:
-    exclude: com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure # 去除druid配置
+  #druid数据源连接池，和pom配合使用，5项
   datasource:
-    # 指定使用 Druid 数据源
-    type: com.alibaba.druid.pool.DruidDataSource
-    dynamic:
-      druid:
-        # 初始连接数
-        initial-size: 5
-        # 最小连接池数量
-        minIdle: 10
-        # 最大连接池数量
-        maxActive: 20
-        # 配置获取连接等待超时的时间
-        maxWait: 60000
-        # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
-        timeBetweenEvictionRunsMillis: 60000
-        # 配置一个连接在池中最小生存的时间，单位是毫秒
-        minEvictableIdleTimeMillis: 300000
-        # 配置一个连接在池中最大生存的时间，单位是毫秒
-        maxEvictableIdleTimeMillis: 900000
-        # 配置检测连接是否有效
-        validationQuery: SELECT 1
-        testWhileIdle: true
-        testOnBorrow: false
-        testOnReturn: false
-        filters: stat,wall,log4j2
-        share-prepared-statements: true
-        # 通过 connection-properties 属性打开 mergeSql 功能；慢 SQL 记录
-        connection-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
-
-      primary: db1 # 配置默认数据库
-      datasource:
-        db1:
-          username: root
-          password: 12356
-          url: jdbc:mysql://localhost:3306/api-boot-admin?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&serverTimezone=GMT%2B8
-          driver-class-name: com.mysql.cj.jdbc.Driver
-
-
-        db2:
-          username: root
-          password: 123456
-          url: jdbc:mysql://localhost:3306/api-boot-admin2?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&serverTimezone=GMT%2B8
-          driver-class-name: com.mysql.cj.jdbc.Driver
-
     druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/api-boot-admin?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&serverTimezone=GMT%2B8
+      username: xiongfei
+      password: xiongfei
+
+      initialSize: 5
+      minIdle: 5
+      maxActive: 20
+      maxWait: 60000
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: SELECT 1 FROM DUAL
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      poolPreparedStatements: true
+      #   配置监控统计拦截的filters，stat:监控统计、Log4j:日志记录、wall:防御sql注入
+      # filters: stat,wall,log4j
+      maxPoolPreparedStatementPerConnectionSize: 20
+      useGlobalDataSourceStat: true
+      connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
       # 通过 connection-properties 属性打开 mergeSql 功能；慢 SQL 记录
-      connection-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
       filter:
         wall:
           enabled: true
@@ -73,7 +38,7 @@ spring:
           log-slow-sql: true
           slow-sql-millis: 10000
           merge-sql: true
-      # 配置 DruidStatFilter
+        # 配置 DruidStatFilter
       web-stat-filter:
         enabled: true
         url-pattern: /*
@@ -91,30 +56,9 @@ spring:
         reset-enable: false
         # 登录用户名/密码
         login-username: root
-        login-password: 123
+        login-password: 12356
       aop-patterns: com.druid.*
 
-
-
-# ApiBoot
-api:
-  boot:
-    # ApiBoot Logging相关配置
-    logging:
-      format-console-log-json: true
-      show-console-log: true
-      # 配置日志排除的采集的接口地址列表，使用Ant方式配置
-      ignore-paths:
-        - /swagger-resources/**
-        - /swagger-ui.html
-        - /webjars/**
-      # 配置Log Server
-      admin:
-        server-address: logging-xf:xf#logserver@127.0.0.1:1224
-    swagger:
-      version: v1.0
-      title: 金综链接口服务接口定义文档
-      description: 金综链接口服务
 
 # 修改项目日志等级
 # 可打印SQL，仅开发环境配置

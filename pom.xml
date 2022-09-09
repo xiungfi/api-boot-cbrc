@@ -10,7 +10,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.7.0</version>
+        <version>2.4.5</version>
     </parent>
     <groupId>com.boczj</groupId>
     <artifactId>api-boot-cbrc</artifactId>
@@ -21,16 +21,17 @@
     </description>
     <properties>
         <java.version>1.8</java.version>
-        <api.boot.version>2.3.7</api.boot.version>
+        <api.boot.version>2.3.8</api.boot.version>
         <hutool.version>5.8.5</hutool.version>
         <okhttp.version>4.9.0</okhttp.version>
         <okhttp.logging-interceptor.version>4.10.0</okhttp.logging-interceptor.version>
         <x-easypdf.version>2.10.1</x-easypdf.version>
+        <mapstruct.version>1.4.2.Final</mapstruct.version>
+        <javax.inject.version>1</javax.inject.version>
     </properties>
     <dependencyManagement>
         <dependencies>
             <!--ApiBoot统一版本依赖-->
-            <!--版本依赖详细介绍：http://apiboot.minbox.io/zh-cn/docs/version-rely.html-->
             <dependency>
                 <groupId>org.minbox.framework</groupId>
                 <artifactId>api-boot-dependencies</artifactId>
